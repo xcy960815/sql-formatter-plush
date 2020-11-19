@@ -1,25 +1,170 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+  <meta charset="utf-8" />
+
+  <title></title>
+  <meta name="description" content="A whitespace formatter for different query languages" />
+
+  <meta property="og:title" content="SQL Formatter" />
+  <meta property="og:description" content="A whitespace formatter for different query languages" />
+  <meta property="og:url" content="https://gwax.github.io/sql-formatter/" />
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet" />
+  <script type="text/javascript" src="./sql-formatter.umd.js"></script>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    header {
+      position: relative;
+      height: 120px;
+      padding: 10px 20px;
+      border-bottom: 2px solid #8dc63f;
+      box-sizing: border-box;
+    }
+
+    .select-wrapper {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    h1 {
+      margin: 0 0 8px 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    main {
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      -webkit-align-items: stretch;
+      align-items: stretch;
+      height: calc(100% - 120px);
+    }
+
+    .input,
+    .output {
+      display: flex;
+      -webkit-align-items: stretch;
+      align-items: stretch;
+      width: 50%;
+      height: 100%;
+    }
+
+    .output {
+      border-left: 2px solid #8dc63f;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 20px;
+      border: 0;
+      box-sizing: border-box;
+      font-size: 1.3em;
+      resize: none;
+      outline: none;
+      line-height: 1.3;
+      font-family: 'Roboto Mono', monospace;
+    }
+  </style>
 </head>
 
 <body>
-    <script src="./index.umd.js"></script>
+  <header>
+    <h1>SQL Formatter</h1>
 
-    <script>
-        index.createElement("h2", "rollup-js模版", { color: "red", "font-size": "18px", "background": "pink" })
-    </script>
+    <div class="select-wrapper">
+      <label for="lanugage">Format</label>
+      <select id="language">
+        <option value="hive">
+          Hive
+        </option>
+        <option value="spark">
+          Spark
+        </option>
+        <option value="sql">
+          SQL
+        </option>
+        <option value="n1ql">
+          N1QL
+        </option>
+        <option value="db2">
+          DB2
+        </option>
+        <option value="redshift">
+          AWS Redshift
+        </option>
+
+      </select>
+      |
+      <label for="uppercae">开启大写</label>
+      <input type="checkbox" id="uppercase" name="uppercae" checked />
+    </div>
+  </header>
+  <main>
+    <section class="input">
+      <textarea id="input" autofocus="true" wrap="off">select 
+nick_name -- case 'M'
+-- 'F'
+,a.birthday
+from xxx  
+      </textarea>
+    </section>
+    <section class="output">
+      <textarea id="output" readonly="true" wrap="off"></textarea>
+    </section>
+  </main>
+
+  <!-- Load from local (for development) -->
+
+  <!-- Fallback to reading from npm -->
+  <!-- <script>
+    window.sqlFormatter ||
+      document.write(
+        unescape(
+          '%3Cscript type="text/javascript" src="https://unpkg.com/@gwax/sql-formatter@latest/dist/sql-formatter.min.js"%3E%3C/script%3E'
+        )
+      );
+  </script> -->
+  <script>
+    const array = [1, 2, 3, 4, 5]
+    array.splice(0, 1, 0)
+    // console.log(array)
+    document.addEventListener('DOMContentLoaded', function () {
+      const language = document.getElementById('language');
+      const uppercase = document.getElementById('uppercase');
+      const input = document.getElementById('input');
+      const output = document.getElementById('output');
+
+      function format() {
+        // console.time('formatting');
+        output.value = sqlFormatter.format(input.value, {
+          language: language.options[language.selectedIndex].value,
+          uppercase: uppercase.checked,
+        });
+        // console.timeEnd('formatting');
+      }
+
+      input.addEventListener('input', format);
+      language.addEventListener('change', format);
+      uppercase.addEventListener('change', format);
+      format();
+    });
+  </script>
 </body>
 
 </html>

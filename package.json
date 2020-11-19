@@ -1,8 +1,8 @@
 {
-    "name": "rollup-js-template",
-    "version": "1.0.0",
-    "description": "使用rollup打包js，并且在node.js中支持es6的import语法 可打包外部js",
-    "main": "dist/index.umd.js",
+    "name": "sql-formatter-plush",
+    "version": "1.0.5",
+    "description": "基于sql-formatter的改良版、添加了hive formatter",
+    "main": "dist/sqlFormatter.umd.js",
     "scripts": {
         "dev": "NODE_ENV=development ENV=daily rollup -c -w",
         "build": "NODE_ENV=production ENV=prod  rollup -c"
@@ -11,12 +11,14 @@
     "author": "xuchongyu",
     "license": "MIT",
     "devDependencies": {
+        "@babel/core": "^7.12.3",
+        "@babel/plugin-proposal-class-properties": "^7.12.1",
         "@rollup/plugin-commonjs": "^16.0.0",
         "@rollup/plugin-node-resolve": "^10.0.0",
         "babel-core": "^6.9.1",
         "babel-loader": "^6.2.4",
         "babel-plugin-add-module-exports": "^0.2.1",
-        "babel-plugin-transform-object-assign": "^6.22.0",
+        "babel-plugin-transform-class-properties": "^6.24.1",
         "babel-preset-env": "^1.5.1",
         "rollup": "^2.32.1",
         "rollup-plugin-babel": "^3.0.7",
