@@ -117,11 +117,27 @@
   </header>
   <main>
     <section class="input">
-      <textarea id="input" autofocus="true" wrap="off">select 
-nick_name -- case 'M'
--- 'F'
-,a.birthday
-from xxx  
+      <textarea id="input" autofocus="true" wrap="off">use resys_online;
+        drop table if exists target_push_seller_2019_03_26;
+        create table if not exists target_push_seller_2019_03_26(
+          seller_id	string
+        );
+        
+        create external table if not exists tmp_target_push_seller_2019_03_26(
+          user_id	string,
+          probability		double
+        )
+        ROW FORMAT DELIMITED
+        FIELDS TERMINATED BY '\t'
+        location '/user/resys/users/tanghouqiang/push_seller_2019_03_26';
+        
+        INSERT OVERWRITE TABLE target_push_seller_2019_03_26
+        SELECT 
+          user_id
+        FROM tmp_target_push_seller_2019_03_26;
+        
+        DROP TABLE tmp_target_push_seller_2019_03_26;
+        
       </textarea>
     </section>
     <section class="output">

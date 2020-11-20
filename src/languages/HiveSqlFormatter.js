@@ -3,417 +3,301 @@ import Tokenizer from '../core/Tokenizer'
 import tokenTypes from '../core/tokenTypes'
 
 const reservedWords = [
-    'ADD',
-    'ADMIN',
-    'ANALYZE',
-    'ARCHIVE',
-    'ASC',
-    'BEFORE',
-    'BUCKET',
-    'BUCKETS',
-    'CASCADE',
-    'CASE',
-    'CHANGE',
-    'CLUSTER',
-    'CLUSTERED',
-    'CLUSTERSTATUS',
-    'COLLECTION',
-    'COLUMN',
-    'COLUMNS',
-    'COMMENT',
-    'COMPACT',
-    'COMPACTIONS',
-    'COMPUTE',
-    'CONCATENATE',
-    'CONF',
-    'CONTINUE',
-    'CREATE',
-    'CROSS',
-    'CUBE',
-    'CURRENT',
-    'CURRENT_DATE',
-    'CURRENT_TIMESTAMP',
-    'CURSOR',
-    'DATA',
-    'DATABASE',
-    'DATABASES',
-    'DATE',
-    'DATETIME',
-    'DAY',
-    'DBPROPERTIES',
-    'DECIMAL',
-    'DEFERRED',
-    'DEFINED',
-    'DELETE',
-    'DELIMITED',
-    'DEPENDENCY',
-    'DESC',
-    'DESCRIBE',
-    'DIRECTORIES',
-    'DIRECTORY',
-    'DISABLE',
-    'DISTINCT',
-    'DISTRIBUTE',
-    'DOUBLE',
-    'DROP',
-    'ELEM_TYPE',
-    'ELSE',
-    'ENABLE',
-    'END',
-    'ESCAPED',
-    'EXCHANGE',
-    'EXCLUSIVE',
-    'EXISTS',
-    'EXPLAIN',
-    'EXPORT',
-    'EXTENDED',
-    'EXTERNAL',
-    'FALSE',
-    'FETCH',
-    'FIELDS',
-    'FILE',
-    'FILEFORMAT',
-    'FIRST',
-    'FLOAT',
-    'FOLLOWING',
-    'FOR',
-    'FORMAT',
-    'FORMATTED',
-    'FROM',
-    'FULL',
-    'FUNCTION',
-    'FUNCTIONS',
-    'GRANT',
-    'GROUP',
-    'GROUPING',
-    'HOLD_DDLTIME',
-    'HOUR',
-    'IDXPROPERTIES',
-    'IF',
-    'IGNORE',
-    'IMPORT',
-    'IN',
-    'INDEX',
-    'INDEXES',
-    'INNER',
-    'INPATH',
-    'INPUTDRIVER',
-    'INPUTFORMAT',
-    'INSERT',
-    'INT',
-    'INTERSECT',
-    'INTERVAL',
-    'INTO',
+    'ADD', //xx
+    'ADMIN', //xx
+    'ANALYZE', //
+    'ARCHIVE', //xx
+    'ASC', //
+    'BEFORE', //xx
+    'BUCKET', //xx
+    'BUCKETS', //xx
+    'CASCADE', //
+    'CASE', //
+    'CHANGE', //xx
+    'CLUSTER', //xx
+    'CLUSTERED', //xx
+    'CLUSTERSTATUS', //xx
+    'COLLECTION', //xx
+    'COLUMN', //
+    'COLUMNS', //
+    'COMMENT', //
+    'COMPACT', //xx
+    'COMPACTIONS', //xx
+    'COMPUTE', //xx
+    'CONCATENATE', //xx
+    'CONF', //xx
+    'CONTINUE', //xx
+    'CUBE', //xx
+    'DATA', //xx
+    'DATABASES', //
+    'DATETIME', //xx
+    'DAY', //xx
+    'DBPROPERTIES', //
+    'DEFERRED', //xx
+    'DEFINED', //xx
+    'DELIMITED', //xx
+    'DEPENDENCY', //xx
+    'DESC', //
+    'DIRECTORIES', //xx
+    'DIRECTORY', //xx
+    'DISABLE', //xx
+    'DISTRIBUTE', //xx
+    'ELEM_TYPE', //xx
+    'ENABLE', //xx
+    'ESCAPED', //xx
+    'EXCHANGE', //xx
+    'EXCLUSIVE', //xx
+    'EXPLAIN', //xx
+    'EXPORT', //
+    'FILE', //
+    'FILEFORMAT', //xx
+    'FIRST', //xx
+    'FORMAT', //xx
+    'FORMATTED', //xx
+    'FUNCTIONS', //xx
+    'HOLD_DDLTIME', //xx
+    'HOUR', //
+    'IDXPROPERTIES', //xx
+    'IGNORE', //xx
+    'INDEX', //
+    'INDEXES', //
+    'INPATH', //xx
+    'INPUTDRIVER', //xx
+    'INPUTFORMAT', //xx
     'IS',
-    'ITEMS',
-    'JAR',
-    'KEYS',
-    'KEY_TYPE',
-    'LATERAL',
-    'LINES',
-    'LOAD',
-    'LOCAL',
-    'LOCATION',
-    'LOCK',
-    'LOCKS',
-    'LOGICAL',
-    'LONG',
-    'MACRO',
-    'MAP',
-    'MAPJOIN',
-
-    'MATERIALIZED',
-    'MINUS',
-    'MINUTE',
-    'MONTH',
-    'MORE',
-    'MSCK',
-    'NONE',
-    'NOSCAN',
-    'NOT',
-    'NO_DROP',
-    'NULL',
-    'OF',
-    'OFFLINE',
-    'ON',
-    'OPTION',
-
-    'ORDER',
-
-    'OUTPUTDRIVER',
-    'OUTPUTFORMAT',
-    'OVER',
-    'OVERWRITE',
-    'OWNER',
-    'PARTIALSCAN',
-
-    'PARTITION',
-    'PARTITIONED',
-    'PARTITIONS',
-
-    'PLUS',
-    'PRECEDING',
-    'PRESERVE',
-    'PRETTY',
-    'PRINCIPALS',
-
-    'PROTECTION',
-    'PURGE',
-
-    'READ',
-    'READONLY',
-
-    'REBUILD',
-    'RECORDREADER',
-    'RECORDWRITER',
-
-    'REGEXP',
-    'RELOAD',
-    'RENAME',
-    'REPAIR',
-    'REPLACE',
-    'RESTRICT',
-    'REVOKE',
-    'REWRITE',
-    'RIGHT',
-    'RLIKE',
-    'ROLE',
-    'ROLES',
-    'ROLLUP',
-    'ROW',
-    'ROWS',
-    'SCHEMA',
-    'SCHEMAS',
-    'SECOND',
-    'SELECT',
-    'SEMI',
-    'SERDE',
-    'SERDEPROPERTIES',
-    'SERVER',
-    'SET',
-    'SETS',
-    'SHARED',
-    'SHOW',
-    'SHOW_DATABASE',
-    'SKEWED',
-    'SMALLINT',
-    'SORT',
-    'SORTED',
-    'SSL',
-    'STATISTICS',
-    'STORED',
-    'STREAMTABLE',
-    'STRING',
-    'STRUCT',
-    'TABLE',
-    'TABLES',
-    'TABLESAMPLE',
-    'TBLPROPERTIES',
-    'TEMPORARY',
-    'TERMINATED',
-    'THEN',
-    'TIMESTAMP',
-    'TINYINT',
-    'TO',
-    'TOUCH',
-    'TRANSACTIONS',
-    'TRANSFORM',
-    'TRIGGER',
-    'TRUE',
-    'TRUNCATE',
-    'UNARCHIVE',
-    'UNBOUNDED',
-    'UNDO',
-    'UNION',
-    'UNIONTYPE',
-    'UNIQUEJOIN',
-    'UNLOCK',
-    'UNSET',
-    'UNSIGNED',
-    'UPDATE',
-    'URI',
-    'USE',
-    'USER',
-    'USING',
-    'UTC',
-
-    'UTCTIMESTAMP',
-    'VALUES',
-    'VALUE_TYPE',
-    'VARCHAR',
-    'VIEW',
-    'WHEN',
-    'WHERE',
-    'WHILE',
-    'WINDOW',
-    'WITH',
-    'YEAR',
-
-    'ALL',
-    'ALTER',
-    'AND',
-    'ARRAY',
-    'AS',
-    'AUTHORIZATION',
-    'BETWEEN',
-    'BIGINT',
-    'BINARY',
-    'BOOLEAN',
-    'BOTH',
-    'BY',
-    'CASE',
-    'CAST',
-    'CHAR',
-    'COLUMN',
-    'CONF',
-    'CREATE',
-    'CROSS',
-    'CUBE',
-    'CURRENT',
-    'CURRENT_DATE',
-    'CURRENT_TIMESTAMP',
-    'CURSOR',
-    'DATABASE',
-    'DATE',
-    'DECIMAL',
-    'DELETE',
-    'DESCRIBE',
-    'DISTINCT',
-    'DOUBLE',
-    'DROP',
-    'ELSE',
-    'END',
-    'EXCHANGE',
-    'EXISTS',
-    'EXTENDED',
-    'EXTERNAL',
-    'FALSE',
-    'FETCH',
-    'FLOAT',
-    'FOLLOWING',
-    'FOR',
-    'FROM',
-    'FULL',
-    'FUNCTION',
-    'GRANT',
-    'GROUP',
-    'GROUPING',
-
-    'IF',
-    'IMPORT',
-    'IN',
-    'INNER',
-    'INSERT',
-    'INT',
-    'INTERSECT',
-    'INTERVAL',
-    'INTO',
+    'ITEMS', //xx
+    'JAR', //xx
+    'KEYS', //
+    'KEY_TYPE', //xx
+    'LATERAL', //xx
+    'LINES', //xx
+    'LOAD', //xx
+    'LOCAL', //xx
+    'LOCK', //xx
+    'LOCKS', //xx
+    'LOGICAL', //xx
+    'LONG', //xx
+    'MAPJOIN', //xx
+    'MATERIALIZED', //xx
+    'MINUS', //xx
+    'MINUTE', //
+    'MONTH', //
+    'MSCK', //xx
+    'NOSCAN', //xx
+    'NO_DROP', //xx
+    'OFFLINE', //xx
+    'OPTION', //xx
+    'ORDER', //xx
+    'OUTPUTDRIVER', //xx
+    'OUTPUTFORMAT', //xx
+    'OVER', //xx
+    'OVERWRITE', //xx
+    'OWNER', //xx
+    'PARTIALSCAN', //xx
+    'PARTITION', //
+    'PARTITIONED', //xx
+    'PARTITIONS', //
+    'PLUS', //xx
+    'PRECEDING', //xx
+    'PRESERVE', //xx
+    'PRETTY', //xx
+    'PRINCIPALS', //xx
+    'PROTECTION', //xx
+    'PURGE', //xx
+    'READ', //xx
+    'READONLY', //xx
+    'REBUILD', //xx
+    'RECORDREADER', //xx
+    'RECORDWRITER', //xx
+    'RELOAD', //xx
+    'RENAME', //xx
+    'REPAIR', //xx
+    'REPLACE', //
+    'RESTRICT', //xx
+    'REWRITE', //xx
+    'ROLE', //xx
+    'ROLES', //xx
+    'ROLLUP', //xx
+    'SCHEMA', //xx
+    'SCHEMAS', //xx
+    'SECOND', //
+    'SEMI', //xx
+    'SERDE', //xx
+    'SERDEPROPERTIES', //xx
+    'SERVER', //xx
+    'SETS', //xx
+    'SHARED', //xx
+    'SHOW', //xx
+    'SHOW_DATABASE', //xx
+    'SKEWED', //xx
+    'SORT', //xx
+    'SORTED', //xx
+    'SSL', //xx
+    'STATISTICS', //xx
+    'STORED', //xx
+    'STREAMTABLE', //xx
+    'STRING', //
+    'STRUCT', //
+    'TABLE', //
+    'TABLES', //
+    'TABLESAMPLE', //xx
+    'TEMPORARY', //
+    'TERMINATED', //
+    'TINYINT', //xx
+    'TOUCH', //xx
+    'TRANSACTIONS', //xx
+    'UNARCHIVE', //xx
+    'UNDO', //xx
+    'UNIONTYPE', //xx
+    'UNLOCK', //xx
+    'UNSET', //xx
+    'UNSIGNED', //
+    'URI', //xx
+    'USE', //
+    'UTC', //xx
+    'UTCTIMESTAMP', //xx
+    'VALUE_TYPE', //xx
+    'VIEW', //
+    'WHILE', //xx
+    'YEAR', //xx
+    'ALL', //xx
+    'ALTER', //xx
+    'ARRAY', //xx
+    'AS', //
+    'AUTHORIZATION', //xx
+    'BETWEEN', //
+    'BIGINT', //
+    'BINARY', //xx
+    'BOOLEAN', //xx
+    'BOTH', //xx
+    'BY', //xx
+    'CAST', //xx
+    'CHAR', //xx
+    'CROSS', //xx
+    'CURRENT', //xx
+    'CURRENT_DATE', //
+    'CURRENT_TIMESTAMP', //
+    'CURSOR', //xx
+    'DATABASE', //
+    'DATE', //xx
+    'DECIMAL', //xx
+    'DELETE', //
+    'DESCRIBE', //
+    'DISTINCT', //
+    'DOUBLE', //xx
+    'DROP', //xx
+    'ELSE', //
+    'END', //
+    'EXISTS', //
+    'EXTENDED', //xx
+    'EXTERNAL', //xx
+    'FALSE', //xx
+    'FETCH', //xx
+    'FLOAT', //xx
+    'FOLLOWING', //xx
+    'FOR', //xx
+    'FULL', //
+    'FUNCTION', //
+    'GRANT', //
+    'GROUP', //xx
+    'GROUPING', //xx
+    'IF', //
+    'IMPORT', //
+    'IN', //
+    'INNER', //
+    'INT', //xx
+    'INTERVAL', //
+    'INTO', //
     'IS',
-
-    'LEFT',
-    'LESS',
-    'LIKE',
-    'MACRO',
-    'MAP',
-    'MORE',
-    'NONE',
-    'NOT',
-    'NULL',
-    'OF',
-    'ON',
-
-    'OUT',
-    'OUTER',
-
-    'PERCENT',
-
-    'PROCEDURE',
-
-    'READS',
-    'REDUCE',
-    'REGEXP',
-    'REVOKE',
-    'RIGHT',
-    'RLIKE',
-    'ROLLUP',
-    'ROW',
-    'ROWS',
-    'SELECT',
-    'SET',
-    'SMALLINT',
-    'TABLE',
-    'TABLESAMPLE',
-    'THEN',
-    'TIMESTAMP',
-    'TO',
-    'TRANSFORM',
-    'TRIGGER',
-    'TRUE',
-    'TRUNCATE',
-    'UNBOUNDED',
-    'UNIQUEJOIN',
-    'UPDATE',
-    'USER',
-    'USING',
-    'VALUES',
-    'VARCHAR',
-    'WHEN',
-    'WHERE',
-    'WINDOW',
-    'WITH',
+    'LESS', //xx
+    'LIKE', //
+    'MACRO', //xx
+    'MAP', //xx
+    'MORE', //xx
+    'NONE', //xx
+    'NOT', //
+    'NULL', //xx
+    'OF', //xx
+    'ON', //
+    'OUT', //xx
+    'OUTER', //xx
+    'PERCENT', //xx
+    'PROCEDURE', //xx
+    'READS', //xx
+    'REDUCE', //xx
+    'REGEXP', //
+    'REVOKE', //xx
+    'RIGHT', //xx
+    'RLIKE', //
+    'SET', //
+    'SMALLINT', //xx
+    'THEN', //
+    'TIMESTAMP', //xx
+    'TO', //
+    'TRANSFORM', //
+    'TRIGGER', //xx
+    'TRUE', //
+    'TRUNCATE', //
+    'UNBOUNDED', //
+    'UNIQUEJOIN', //xx
+    'USER', //xx
+    'VARCHAR', //xx
+    'WITH', //
 ]
 
 const reservedTopLevelWords = [
     'AFTER',
-    'ALTER COLUMN',
+    'ALTER COLUMN', //
     'ALTER DATABASE',
     'ALTER SCHEMA',
     'ALTER TABLE',
-    'CLUSTER BY',
-    'CLUSTERED BY',
-    'DELETE FROM',
+    'DELETE FROM', //
     'DISTRIBUTE BY',
-    'FROM',
-    'GROUP BY',
+    'FROM', //
+    'GROUP BY', //
     'HAVING',
-    'INSERT INTO',
-    'INSERT',
+    'INSERT INTO', //
+    'INSERT', //
     'LIMIT',
     'OPTIONS',
-    'ORDER BY',
+    'ORDER BY', //
     'PARTITION BY',
-    'PARTITIONED BY',
+    'PARTITIONED BY', //
     'RANGE',
-    'ROWS',
     'SELECT',
     'SET CURRENT SCHEMA',
     'SET SCHEMA',
-    'TBLPROPERTIES',
-    'UPDATE',
-    'USING',
-    'VALUES',
-    'WHERE',
-    'WINDOW',
+    'TBLPROPERTIES', //
+    'UPDATE', //
+    'USING', //
+    'VALUES', //
+    'WHERE', //
+    'WINDOW', //
 ]
 
 const reservedTopLevelWordsNoIndent = [
     'EXCEPT ALL',
     'EXCEPT',
     'INTERSECT ALL',
-    'INTERSECT',
+    'INTERSECT', //
     'UNION ALL',
-    'UNION',
+    'UNION', //
 ]
 
 const reservedNewlineWords = [
-    'AND',
+    'LEFT',
+    'LOCATION',
+    'ROWS',
+    'ROW',
+    'FIELDS',
+    'AND', //
     'ANTI JOIN',
-    'CREATE OR',
-    'CREATE',
+    'CREATE OR', //
+    'CREATE', //
     'CROSS JOIN',
-    'ELSE',
+    'ELSE', //
     'FULL OUTER JOIN',
-    'INNER JOIN',
+    'INNER JOIN', //
     'JOIN',
     'LATERAL VIEW',
     'LEFT ANTI JOIN',
@@ -438,7 +322,7 @@ const reservedNewlineWords = [
     'RIGHT OUTER JOIN',
     'RIGHT SEMI JOIN',
     'SEMI JOIN',
-    'WHEN',
+    'WHEN', //
     'XOR',
 ]
 
