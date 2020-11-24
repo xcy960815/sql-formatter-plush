@@ -78,7 +78,7 @@ export default class Formatter {
             token = this.tokenOverride(token) || token
 
             if (token.type === tokenTypes.WHITESPACE) {
-                // ignore (we do our own whitespace formatting)
+                // ignore
             } else if (token.type === tokenTypes.LINE_COMMENT) {
                 formattedQuery = this.formatLineComment(token, formattedQuery)
             } else if (token.type === tokenTypes.BLOCK_COMMENT) {
@@ -316,6 +316,7 @@ export default class Formatter {
         return (
             trimSpacesEnd(query) +
             token.value +
+            '\n' +
             '\n'.repeat(this.cfg.linesBetweenQueries || 1)
         )
     }
@@ -325,7 +326,12 @@ export default class Formatter {
         if (!query.endsWith('\n')) query += '\n'
         return query + this.indentation.getIndent()
     }
-
+    specifyAddNewline(query) {
+        // query = trimSpacesEnd(query)
+        // if (!query.endsWith('\n')) query += '\n'
+        // return query + this.indentation.getIndent()
+        return (query += '\n' + ' ' + '\n')
+    }
     previousToken(offset = 1) {
         return this.tokens[this.index - offset] || {}
     }

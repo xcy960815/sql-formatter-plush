@@ -115,29 +115,50 @@
       <input type="checkbox" id="uppercase" name="uppercae" checked />
     </div>
   </header>
+
   <main>
     <section class="input">
       <textarea id="input" autofocus="true" wrap="off">use resys_online;
-        drop table if exists target_push_seller_2019_03_26;
-        create table if not exists target_push_seller_2019_03_26(
-          seller_id	string
-        );
-        
-        create external table if not exists tmp_target_push_seller_2019_03_26(
-          user_id	string,
-          probability		double
-        )
-        ROW FORMAT DELIMITED
-        FIELDS TERMINATED BY '\t'
-        location '/user/resys/users/tanghouqiang/push_seller_2019_03_26';
-        
-        INSERT OVERWRITE TABLE target_push_seller_2019_03_26
-        SELECT 
-          user_id
-        FROM tmp_target_push_seller_2019_03_26;
-        
-        DROP TABLE tmp_target_push_seller_2019_03_26;
-        
+
+drop table if exists target_push_seller_2019_03_26;
+
+create table if not exists target_push_seller_2019_03_26(seller_id string);
+use resys_online;
+
+drop table if exists target_push_seller_2019_03_26;
+
+create table if not exists target_push_seller_2019_03_26(seller_id string);
+
+create external table if not exists tmp_target_push_seller_2019_03_26(user_id string, probability double)
+row format delimited
+fields terminated by '\t'
+location '/user/resys/users/tanghouqiang/push_seller_2019_03_26';
+
+insert
+
+overwrite table target_push_seller_2019_03_26
+select
+
+user_id
+from
+tmp_target_push_seller_2019_03_26;
+
+drop table tmp_target_push_seller_2019_03_26;
+create external table if not exists tmp_target_push_seller_2019_03_26(user_id string, probability double)
+row format delimited
+fields terminated by '\t'
+location '/user/resys/users/tanghouqiang/push_seller_2019_03_26';
+
+insert
+
+overwrite table target_push_seller_2019_03_26
+select
+
+user_id
+from
+tmp_target_push_seller_2019_03_26;
+
+drop table tmp_target_push_seller_2019_03_26;
       </textarea>
     </section>
     <section class="output">
@@ -157,9 +178,7 @@
       );
   </script> -->
   <script>
-    const array = [1, 2, 3, 4, 5]
-    array.splice(0, 1, 0)
-    // console.log(array)
+
     document.addEventListener('DOMContentLoaded', function () {
       const language = document.getElementById('language');
       const uppercase = document.getElementById('uppercase');
