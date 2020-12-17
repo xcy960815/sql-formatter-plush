@@ -136,7 +136,7 @@ export default class Formatter {
         })
         return formattedQuery
     }
-    handleFindFirstIndex() {}
+
     formatLineComment(token, query) {
         const follow = this.followNonWhitespaceTokenIndex()
 
@@ -313,12 +313,48 @@ export default class Formatter {
 
     formatQuerySeparator(token, query) {
         this.indentation.resetIndentation()
-        return (
-            trimSpacesEnd(query) +
-            token.value +
-            '\n' +
-            '\n'.repeat(this.cfg.linesBetweenQueries || 1)
-        )
+        let firstLineCommentIndex
+        for (let index = this.index; index < this.tokens.length; index++) {
+            const element = this.tokens[index]
+            if (element.type === tokenTypes.LINE_COMMENT) {
+                firstLineCommentIndex = index
+                break
+            }
+        }
+
+        const tokens = this.tokens.slice(this.index + 1, firstLineCommentIndex)
+        // 如果 tokens 的长度为 0 就说明 后面紧挨着 一个注释
+        if (tokens && token.length === 0) {
+            return (
+                trimSpacesEnd(query) +
+                token.value +
+                ' '.repeat(this.cfg.linesBetweenQueries || 1)
+            )
+        } else if (tokens && tokens.length > 0) {
+            const TokenTypes = [tokenTypes.LINE_COMMENT, tokenTypes.WHITESPACE]
+            const allLineCommentOrWhitespace = tokens.every((item) =>
+                TokenTypes.includes(item.type)
+            )
+            if (allLineCommentOrWhitespace) {
+                return (
+                    trimSpacesEnd(query) +
+                    token.value +
+                    ' '.repeat(this.cfg.linesBetweenQueries || 1)
+                )
+            } else {
+                return (
+                    trimSpacesEnd(query) +
+                    token.value +
+                    '\n'.repeat(this.cfg.linesBetweenQueries || 1)
+                )
+            }
+        } else {
+            return (
+                trimSpacesEnd(query) +
+                token.value +
+                '\n'.repeat(this.cfg.linesBetweenQueries || 1)
+            )
+        }
     }
 
     addNewline(query) {

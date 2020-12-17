@@ -796,9 +796,6 @@
               return formattedQuery;
           }
       }, {
-          key: 'handleFindFirstIndex',
-          value: function handleFindFirstIndex() {}
-      }, {
           key: 'formatLineComment',
           value: function formatLineComment(token, query) {
               var follow = this.followNonWhitespaceTokenIndex();
@@ -975,7 +972,32 @@
           key: 'formatQuerySeparator',
           value: function formatQuerySeparator(token, query) {
               this.indentation.resetIndentation();
-              return trimSpacesEnd(query) + token.value + '\n' + '\n'.repeat(this.cfg.linesBetweenQueries || 1);
+              var firstLineCommentIndex = void 0;
+              for (var index = this.index; index < this.tokens.length; index++) {
+                  var element = this.tokens[index];
+                  if (element.type === tokenTypes.LINE_COMMENT) {
+                      firstLineCommentIndex = index;
+                      break;
+                  }
+              }
+
+              var tokens = this.tokens.slice(this.index + 1, firstLineCommentIndex);
+              // 如果 tokens 的长度为 0 就说明 后面紧挨着 一个注释
+              if (tokens && token.length === 0) {
+                  return trimSpacesEnd(query) + token.value + ' '.repeat(this.cfg.linesBetweenQueries || 1);
+              } else if (tokens && tokens.length > 0) {
+                  var TokenTypes = [tokenTypes.LINE_COMMENT, tokenTypes.WHITESPACE];
+                  var allLineCommentOrWhitespace = tokens.every(function (item) {
+                      return TokenTypes.includes(item.type);
+                  });
+                  if (allLineCommentOrWhitespace) {
+                      return trimSpacesEnd(query) + token.value + ' '.repeat(this.cfg.linesBetweenQueries || 1);
+                  } else {
+                      return trimSpacesEnd(query) + token.value + '\n'.repeat(this.cfg.linesBetweenQueries || 1);
+                  }
+              } else {
+                  return trimSpacesEnd(query) + token.value + '\n'.repeat(this.cfg.linesBetweenQueries || 1);
+              }
           }
       }, {
           key: 'addNewline',
@@ -1473,7 +1495,7 @@
   'EXISTS', //
   'EXTENDED', //xx
   'EXTERNAL', //xx
-  'FALSE', //xx
+
   'FETCH', //xx
   'FLOAT', //xx
   'FOLLOWING', //xx
@@ -1517,7 +1539,7 @@
   'TO', //
   'TRANSFORM', //
   'TRIGGER', //xx
-  'TRUE', //
+
   'TRUNCATE', //
   'UNBOUNDED', //
   'UNIQUEJOIN', //xx

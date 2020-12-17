@@ -113,52 +113,19 @@
       |
       <label for="uppercae">开启大写</label>
       <input type="checkbox" id="uppercase" name="uppercae" checked />
+      |
+      <label for="commabefore">逗号前置</label>
+      <input type="checkbox" id="commabefore" name="commabefore" checked />
     </div>
   </header>
 
   <main>
     <section class="input">
-      <textarea id="input" autofocus="true" wrap="off">use resys_online;
-
-drop table if exists target_push_seller_2019_03_26;
-
-create table if not exists target_push_seller_2019_03_26(seller_id string);
-use resys_online;
-
-drop table if exists target_push_seller_2019_03_26;
-
-create table if not exists target_push_seller_2019_03_26(seller_id string);
-
-create external table if not exists tmp_target_push_seller_2019_03_26(user_id string, probability double)
-row format delimited
-fields terminated by '\t'
-location '/user/resys/users/tanghouqiang/push_seller_2019_03_26';
-
-insert
-
-overwrite table target_push_seller_2019_03_26
-select
-
-user_id
-from
-tmp_target_push_seller_2019_03_26;
-
-drop table tmp_target_push_seller_2019_03_26;
-create external table if not exists tmp_target_push_seller_2019_03_26(user_id string, probability double)
-row format delimited
-fields terminated by '\t'
-location '/user/resys/users/tanghouqiang/push_seller_2019_03_26';
-
-insert
-
-overwrite table target_push_seller_2019_03_26
-select
-
-user_id
-from
-tmp_target_push_seller_2019_03_26;
-
-drop table tmp_target_push_seller_2019_03_26;
+      <textarea id="input" autofocus="true" wrap="off">
+        select 
+        t.`access_date` `access_date` -- xxx
+        ,t.`access_from` `access_from`
+        from dw.dwd_full_path_yarn_log
       </textarea>
     </section>
     <section class="output">
@@ -166,17 +133,7 @@ drop table tmp_target_push_seller_2019_03_26;
     </section>
   </main>
 
-  <!-- Load from local (for development) -->
 
-  <!-- Fallback to reading from npm -->
-  <!-- <script>
-    window.sqlFormatter ||
-      document.write(
-        unescape(
-          '%3Cscript type="text/javascript" src="https://unpkg.com/@gwax/sql-formatter@latest/dist/sql-formatter.min.js"%3E%3C/script%3E'
-        )
-      );
-  </script> -->
   <script>
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -184,19 +141,20 @@ drop table tmp_target_push_seller_2019_03_26;
       const uppercase = document.getElementById('uppercase');
       const input = document.getElementById('input');
       const output = document.getElementById('output');
-
+      const commabefore = document.getElementById("commabefore")
       function format() {
-        // console.time('formatting');
+
         output.value = sqlFormatter.format(input.value, {
           language: language.options[language.selectedIndex].value,
           uppercase: uppercase.checked,
+          commabefore: commabefore.checked,
         });
-        // console.timeEnd('formatting');
-      }
 
+      }
       input.addEventListener('input', format);
       language.addEventListener('change', format);
       uppercase.addEventListener('change', format);
+      commabefore.addEventListener('change', format);
       format();
     });
   </script>

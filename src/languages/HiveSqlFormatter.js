@@ -191,7 +191,7 @@ const reservedWords = [
     'EXISTS', //
     'EXTENDED', //xx
     'EXTERNAL', //xx
-    'FALSE', //xx
+
     'FETCH', //xx
     'FLOAT', //xx
     'FOLLOWING', //xx
@@ -236,7 +236,7 @@ const reservedWords = [
     'TO', //
     'TRANSFORM', //
     'TRIGGER', //xx
-    'TRUE', //
+
     'TRUNCATE', //
     'UNBOUNDED', //
     'UNIQUEJOIN', //xx
