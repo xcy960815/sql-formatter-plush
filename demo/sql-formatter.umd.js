@@ -937,6 +937,7 @@
           key: 'formatComma',
           value: function formatComma(token, query) {
               query = trimSpacesEnd(query) + token.value + ' ';
+              // query = query + token.value + ' '
               var follow = this.followLineCommentTokenIndex();
               if (this.inlineBlock.isActive()) {
                   return query;

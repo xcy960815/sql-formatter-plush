@@ -277,6 +277,7 @@ export default class Formatter {
     // Commas start a new line (unless within inline parentheses or SQL "LIMIT" clause or followed by comments)
     formatComma(token, query) {
         query = trimSpacesEnd(query) + token.value + ' '
+        // query = query + token.value + ' '
         const follow = this.followLineCommentTokenIndex()
         if (this.inlineBlock.isActive()) {
             return query

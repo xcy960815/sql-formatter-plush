@@ -122,14 +122,17 @@
   <main>
     <section class="input">
       <textarea id="input" autofocus="true" wrap="off">
-        select 
-        t.`access_date` `access_date` -- xxx
-        ,t.`access_from` `access_from`
-        from dw.dwd_full_path_yarn_log
+select seller_id
+,round(sum(pay_order_amt)/100, 2) as pay_amt
+,round(if(sum(pay_order_amt)>0, sum(if(is_fx_order='Y',pay_order_amt,0))/sum(pay_order_amt), 0), 4) as fx_pay_amt_rote
+,count(distinct order_id) as pay_ords
+,count(distinct buyer_id) as pay_cust
+from dw.dwd_trd_all_ord_df
       </textarea>
     </section>
+    <!-- readonly="true" -->
     <section class="output">
-      <textarea id="output" readonly="true" wrap="off"></textarea>
+      <textarea id="output" wrap="off"></textarea>
     </section>
   </main>
 
