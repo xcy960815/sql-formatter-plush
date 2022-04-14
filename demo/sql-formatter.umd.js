@@ -1,10 +1,10 @@
 
 (function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.sqlFormatter = factory());
-}(this, (function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.sqlFormatter = {}));
+}(this, (function (exports) { 'use strict';
 
   /**
    * Constants for token types
@@ -1309,244 +1309,70 @@
 
   function _inherits$5(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-  var reservedWords$5 = ['ADD', //xx
-  'ADMIN', //xx
-  'ANALYZE', //
-  'ARCHIVE', //xx
-  'ASC', //
-  'BEFORE', //xx
-  'BUCKET', //xx
-  'BUCKETS', //xx
-  'CASCADE', //
+  var reservedWords$5 = ['ADD', 'ADMIN', 'ANALYZE', //
+  'ARCHIVE', 'ASC', //
+  'BEFORE', 'BUCKET', 'BUCKETS', 'CASCADE', //
   'CASE', //
-  'CHANGE', //xx
-  'CLUSTER', //xx
-  'CLUSTERED', //xx
-  'CLUSTERSTATUS', //xx
-  'COLLECTION', //xx
-  'COLUMN', //
+  'CHANGE', 'CLUSTER', 'CLUSTERED', 'CLUSTERSTATUS', 'COLLECTION', 'COLUMN', //
   'COLUMNS', //
   'COMMENT', //
-  'COMPACT', //xx
-  'COMPACTIONS', //xx
-  'COMPUTE', //xx
-  'CONCATENATE', //xx
-  'CONF', //xx
-  'CONTINUE', //xx
-  'CUBE', //xx
-  'DATA', //xx
-  'DATABASES', //
-  'DATETIME', //xx
-  'DAY', //xx
-  'DBPROPERTIES', //
-  'DEFERRED', //xx
-  'DEFINED', //xx
-  'DELIMITED', //xx
-  'DEPENDENCY', //xx
-  'DESC', //
-  'DIRECTORIES', //xx
-  'DIRECTORY', //xx
-  'DISABLE', //xx
-  'DISTRIBUTE', //xx
-  'ELEM_TYPE', //xx
-  'ENABLE', //xx
-  'ESCAPED', //xx
-  'EXCHANGE', //xx
-  'EXCLUSIVE', //xx
-  'EXPLAIN', //xx
-  'EXPORT', //
+  'COMPACT', 'COMPACTIONS', 'COMPUTE', 'CONCATENATE', 'CONF', 'CONTINUE', 'CUBE', 'DATA', 'DATABASES', //
+  'DATETIME', 'DAY', 'DBPROPERTIES', //
+  'DEFERRED', 'DEFINED', 'DELIMITED', 'DEPENDENCY', 'DESC', //
+  'DIRECTORIES', 'DIRECTORY', 'DISABLE', 'DISTRIBUTE', 'ELEM_TYPE', 'ENABLE', 'ESCAPED', 'EXCHANGE', 'EXCLUSIVE', 'EXPLAIN', 'EXPORT', //
   'FILE', //
-  'FILEFORMAT', //xx
-  'FIRST', //xx
-  'FORMAT', //xx
-  'FORMATTED', //xx
-  'FUNCTIONS', //xx
-  'HOLD_DDLTIME', //xx
-  'HOUR', //
-  'IDXPROPERTIES', //xx
-  'IGNORE', //xx
-  'INDEX', //
+  'FILEFORMAT', 'FIRST', 'FORMAT', 'FORMATTED', 'FUNCTIONS', 'HOLD_DDLTIME', 'HOUR', //
+  'IDXPROPERTIES', 'IGNORE', 'INDEX', //
   'INDEXES', //
-  'INPATH', //xx
-  'INPUTDRIVER', //xx
-  'INPUTFORMAT', //xx
-  'IS', 'ITEMS', //xx
-  'JAR', //xx
-  'KEYS', //
-  'KEY_TYPE', //xx
-  'LATERAL', //xx
-  'LINES', //xx
-  'LOAD', //xx
-  'LOCAL', //xx
-  'LOCK', //xx
-  'LOCKS', //xx
-  'LOGICAL', //xx
-  'LONG', //xx
-  'MAPJOIN', //xx
-  'MATERIALIZED', //xx
-  'MINUS', //xx
-  'MINUTE', //
+  'INPATH', 'INPUTDRIVER', 'INPUTFORMAT', 'IS', 'ITEMS', 'JAR', 'KEYS', //
+  'KEY_TYPE', 'LATERAL', 'LINES', 'LOAD', 'LOCAL', 'LOCK', 'LOCKS', 'LOGICAL', 'LONG', 'MAPJOIN', 'MATERIALIZED', 'MINUS', 'MINUTE', //
   'MONTH', //
-  'MSCK', //xx
-  'NOSCAN', //xx
-  'NO_DROP', //xx
-  'OFFLINE', //xx
-  'OPTION', //xx
-  'ORDER', //xx
-  'OUTPUTDRIVER', //xx
-  'OUTPUTFORMAT', //xx
-  'OVER', //xx
-  'OVERWRITE', //xx
-  'OWNER', //xx
-  'PARTIALSCAN', //xx
-  'PARTITION', //
-  'PARTITIONED', //xx
-  'PARTITIONS', //
-  'PLUS', //xx
-  'PRECEDING', //xx
-  'PRESERVE', //xx
-  'PRETTY', //xx
-  'PRINCIPALS', //xx
-  'PROTECTION', //xx
-  'PURGE', //xx
-  'READ', //xx
-  'READONLY', //xx
-  'REBUILD', //xx
-  'RECORDREADER', //xx
-  'RECORDWRITER', //xx
-  'RELOAD', //xx
-  'RENAME', //xx
-  'REPAIR', //xx
-  'REPLACE', //
-  'RESTRICT', //xx
-  'REWRITE', //xx
-  'ROLE', //xx
-  'ROLES', //xx
-  'ROLLUP', //xx
-  'SCHEMA', //xx
-  'SCHEMAS', //xx
-  'SECOND', //
-  'SEMI', //xx
-  'SERDE', //xx
-  'SERDEPROPERTIES', //xx
-  'SERVER', //xx
-  'SETS', //xx
-  'SHARED', //xx
-  'SHOW', //xx
-  'SHOW_DATABASE', //xx
-  'SKEWED', //xx
-  'SORT', //xx
-  'SORTED', //xx
-  'SSL', //xx
-  'STATISTICS', //xx
-  'STORED', //xx
-  'STREAMTABLE', //xx
-  'STRING', //
+  'MSCK', 'NOSCAN', 'NO_DROP', 'OFFLINE', 'OPTION', 'ORDER', 'OUTPUTDRIVER', 'OUTPUTFORMAT', 'OVER', 'OVERWRITE', 'OWNER', 'PARTIALSCAN', 'PARTITION', //
+  'PARTITIONED', 'PARTITIONS', //
+  'PLUS', 'PRECEDING', 'PRESERVE', 'PRETTY', 'PRINCIPALS', 'PROTECTION', 'PURGE', 'READ', 'READONLY', 'REBUILD', 'RECORDREADER', 'RECORDWRITER', 'RELOAD', 'RENAME', 'REPAIR', 'REPLACE', //
+  'RESTRICT', 'REWRITE', 'ROLE', 'ROLES', 'ROLLUP', 'SCHEMA', 'SCHEMAS', 'SECOND', //
+  'SEMI', 'SERDE', 'SERDEPROPERTIES', 'SERVER', 'SETS', 'SHARED', 'SHOW', 'SHOW_DATABASE', 'SKEWED', 'SORT', 'SORTED', 'SSL', 'STATISTICS', 'STORED', 'STREAMTABLE', 'STRING', //
   'STRUCT', //
   'TABLE', //
   'TABLES', //
-  'TABLESAMPLE', //xx
-  'TEMPORARY', //
+  'TABLESAMPLE', 'TEMPORARY', //
   'TERMINATED', //
-  'TINYINT', //xx
-  'TOUCH', //xx
-  'TRANSACTIONS', //xx
-  'UNARCHIVE', //xx
-  'UNDO', //xx
-  'UNIONTYPE', //xx
-  'UNLOCK', //xx
-  'UNSET', //xx
-  'UNSIGNED', //
-  'URI', //xx
-  'USE', //
-  'UTC', //xx
-  'UTCTIMESTAMP', //xx
-  'VALUE_TYPE', //xx
-  'VIEW', //
-  'WHILE', //xx
-  'YEAR', //xx
-  'ALL', //xx
-  'ALTER', //xx
-  'ARRAY', //xx
-  'AS', //
-  'AUTHORIZATION', //xx
-  'BETWEEN', //
+  'TINYINT', 'TOUCH', 'TRANSACTIONS', 'UNARCHIVE', 'UNDO', 'UNIONTYPE', 'UNLOCK', 'UNSET', 'UNSIGNED', //
+  'URI', 'USE', //
+  'UTC', 'UTCTIMESTAMP', 'VALUE_TYPE', 'VIEW', //
+  'WHILE', 'YEAR', 'ALL', 'ALTER', 'ARRAY', 'AS', //
+  'AUTHORIZATION', 'BETWEEN', //
   'BIGINT', //
-  'BINARY', //xx
-  'BOOLEAN', //xx
-  'BOTH', //xx
-  'BY', //xx
-  'CAST', //xx
-  'CHAR', //xx
-  'CROSS', //xx
-  'CURRENT', //xx
-  'CURRENT_DATE', //
+  'BINARY', 'BOOLEAN', 'BOTH', 'BY', 'CAST', 'CHAR', 'CROSS', 'CURRENT', 'CURRENT_DATE', //
   'CURRENT_TIMESTAMP', //
-  'CURSOR', //xx
-  'DATABASE', //
-  'DATE', //xx
-  'DECIMAL', //xx
-  'DELETE', //
+  'CURSOR', 'DATABASE', //
+  'DATE', 'DECIMAL', 'DELETE', //
   'DESCRIBE', //
   'DISTINCT', //
-  'DOUBLE', //xx
-  'DROP', //xx
-  'ELSE', //
+  'DOUBLE', 'DROP', 'ELSE', //
   'END', //
   'EXISTS', //
-  'EXTENDED', //xx
-  'EXTERNAL', //xx
-
-  'FETCH', //xx
-  'FLOAT', //xx
-  'FOLLOWING', //xx
-  'FOR', //xx
-  'FULL', //
+  'EXTENDED', 'EXTERNAL', 'FETCH', 'FLOAT', 'FOLLOWING', 'FOR', 'FULL', //
   'FUNCTION', //
   'GRANT', //
-  'GROUP', //xx
-  'GROUPING', //xx
-  'IF', //
+  'GROUP', 'GROUPING', 'IF', //
   'IMPORT', //
   'IN', //
   'INNER', //
-  'INT', //xx
-  'INTERVAL', //
+  'INT', 'INTERVAL', //
   'INTO', //
-  'IS', 'LESS', //xx
-  'LIKE', //
-  'MACRO', //xx
-  'MAP', //xx
-  'MORE', //xx
-  'NONE', //xx
-  'NOT', //
-  'NULL', //xx
-  'OF', //xx
-  'ON', //
-  'OUT', //xx
-  'OUTER', //xx
-  'PERCENT', //xx
-  'PROCEDURE', //xx
-  'READS', //xx
-  'REDUCE', //xx
-  'REGEXP', //
-  'REVOKE', //xx
-  'RIGHT', //xx
-  'RLIKE', //
+  'IS', 'LESS', 'LIKE', //
+  'MACRO', 'MAP', 'MORE', 'NONE', 'NOT', //
+  'NULL', 'OF', 'ON', //
+  'OUT', 'OUTER', 'PERCENT', 'PROCEDURE', 'READS', 'REDUCE', 'REGEXP', //
+  'REVOKE', 'RIGHT', 'RLIKE', //
   'SET', //
-  'SMALLINT', //xx
-  'THEN', //
-  'TIMESTAMP', //xx
-  'TO', //
+  'SMALLINT', 'THEN', //
+  'TIMESTAMP', 'TO', //
   'TRANSFORM', //
-  'TRIGGER', //xx
-
-  'TRUNCATE', //
+  'TRIGGER', 'TRUNCATE', //
   'UNBOUNDED', //
-  'UNIQUEJOIN', //xx
-  'USER', //xx
-  'VARCHAR', //xx
-  'WITH'];
+  'UNIQUEJOIN', 'USER', 'VARCHAR', 'WITH'];
 
   var reservedTopLevelWords$5 = ['AFTER', 'ALTER COLUMN', //
   'ALTER DATABASE', 'ALTER SCHEMA', 'ALTER TABLE', 'DELETE FROM', //
@@ -1685,29 +1511,29 @@
        *
        * @param {String} query
        * @param {Object} cfg
-       *  @param {String} cfg.language Query language, default is Standard SQL
-       *  @param {String} cfg.indent Characters used for indentation, default is "  " (2 spaces)
-       *  @param {Bool} cfg.uppercase Converts keywords to uppercase
-       *  @param {Integer} cfg.linesBetweenQueries How many line breaks between queries
-       *  @param {Object} cfg.params Collection of params for placeholder replacement
+       * @param {String} cfg.language Query language, default is Standard SQL
+       * @param {String} cfg.indent Characters used for indentation, default is "  " (2 spaces)
+       * @param {Bool} cfg.uppercase Converts keywords to uppercase
+       * @param {Integer} cfg.linesBetweenQueries How many line breaks between queries
+       * @param {Object} cfg.params Collection of params for placeholder replacement
        * @return {String}
        */
 
-  };var sqlFormatter = {
-      format: function format(query) {
-          var cfg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  };var format = function format(query) {
+      var cfg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-          var Formatter = StandardSqlFormatter$1;
-          if (cfg.language !== undefined) {
-              Formatter = FORMATTERS[cfg.language];
-          }
-          if (Formatter === undefined) {
-              throw Error('Unsupported SQL dialect: ' + cfg.language);
-          }
-          return new Formatter(cfg).format(query);
+      var Formatter = StandardSqlFormatter$1;
+      if (cfg.language !== undefined) {
+          Formatter = FORMATTERS[cfg.language];
       }
+      if (Formatter === undefined) {
+          throw Error('Unsupported SQL dialect: ' + cfg.language);
+      }
+      return new Formatter(cfg).format(query);
   };
 
-  return sqlFormatter;
+  exports.format = format;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 })));

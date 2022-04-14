@@ -3,245 +3,245 @@ import Tokenizer from '../core/Tokenizer'
 import tokenTypes from '../core/tokenTypes'
 
 const reservedWords = [
-    'ADD', //xx
-    'ADMIN', //xx
+    'ADD',
+    'ADMIN',
     'ANALYZE', //
-    'ARCHIVE', //xx
+    'ARCHIVE',
     'ASC', //
-    'BEFORE', //xx
-    'BUCKET', //xx
-    'BUCKETS', //xx
+    'BEFORE',
+    'BUCKET',
+    'BUCKETS',
     'CASCADE', //
     'CASE', //
-    'CHANGE', //xx
-    'CLUSTER', //xx
-    'CLUSTERED', //xx
-    'CLUSTERSTATUS', //xx
-    'COLLECTION', //xx
+    'CHANGE',
+    'CLUSTER',
+    'CLUSTERED',
+    'CLUSTERSTATUS',
+    'COLLECTION',
     'COLUMN', //
     'COLUMNS', //
     'COMMENT', //
-    'COMPACT', //xx
-    'COMPACTIONS', //xx
-    'COMPUTE', //xx
-    'CONCATENATE', //xx
-    'CONF', //xx
-    'CONTINUE', //xx
-    'CUBE', //xx
-    'DATA', //xx
+    'COMPACT',
+    'COMPACTIONS',
+    'COMPUTE',
+    'CONCATENATE',
+    'CONF',
+    'CONTINUE',
+    'CUBE',
+    'DATA',
     'DATABASES', //
-    'DATETIME', //xx
-    'DAY', //xx
+    'DATETIME',
+    'DAY',
     'DBPROPERTIES', //
-    'DEFERRED', //xx
-    'DEFINED', //xx
-    'DELIMITED', //xx
-    'DEPENDENCY', //xx
+    'DEFERRED',
+    'DEFINED',
+    'DELIMITED',
+    'DEPENDENCY',
     'DESC', //
-    'DIRECTORIES', //xx
-    'DIRECTORY', //xx
-    'DISABLE', //xx
-    'DISTRIBUTE', //xx
-    'ELEM_TYPE', //xx
-    'ENABLE', //xx
-    'ESCAPED', //xx
-    'EXCHANGE', //xx
-    'EXCLUSIVE', //xx
-    'EXPLAIN', //xx
+    'DIRECTORIES',
+    'DIRECTORY',
+    'DISABLE',
+    'DISTRIBUTE',
+    'ELEM_TYPE',
+    'ENABLE',
+    'ESCAPED',
+    'EXCHANGE',
+    'EXCLUSIVE',
+    'EXPLAIN',
     'EXPORT', //
     'FILE', //
-    'FILEFORMAT', //xx
-    'FIRST', //xx
-    'FORMAT', //xx
-    'FORMATTED', //xx
-    'FUNCTIONS', //xx
-    'HOLD_DDLTIME', //xx
+    'FILEFORMAT',
+    'FIRST',
+    'FORMAT',
+    'FORMATTED',
+    'FUNCTIONS',
+    'HOLD_DDLTIME',
     'HOUR', //
-    'IDXPROPERTIES', //xx
-    'IGNORE', //xx
+    'IDXPROPERTIES',
+    'IGNORE',
     'INDEX', //
     'INDEXES', //
-    'INPATH', //xx
-    'INPUTDRIVER', //xx
-    'INPUTFORMAT', //xx
+    'INPATH',
+    'INPUTDRIVER',
+    'INPUTFORMAT',
     'IS',
-    'ITEMS', //xx
-    'JAR', //xx
+    'ITEMS',
+    'JAR',
     'KEYS', //
-    'KEY_TYPE', //xx
-    'LATERAL', //xx
-    'LINES', //xx
-    'LOAD', //xx
-    'LOCAL', //xx
-    'LOCK', //xx
-    'LOCKS', //xx
-    'LOGICAL', //xx
-    'LONG', //xx
-    'MAPJOIN', //xx
-    'MATERIALIZED', //xx
-    'MINUS', //xx
+    'KEY_TYPE',
+    'LATERAL',
+    'LINES',
+    'LOAD',
+    'LOCAL',
+    'LOCK',
+    'LOCKS',
+    'LOGICAL',
+    'LONG',
+    'MAPJOIN',
+    'MATERIALIZED',
+    'MINUS',
     'MINUTE', //
     'MONTH', //
-    'MSCK', //xx
-    'NOSCAN', //xx
-    'NO_DROP', //xx
-    'OFFLINE', //xx
-    'OPTION', //xx
-    'ORDER', //xx
-    'OUTPUTDRIVER', //xx
-    'OUTPUTFORMAT', //xx
-    'OVER', //xx
-    'OVERWRITE', //xx
-    'OWNER', //xx
-    'PARTIALSCAN', //xx
+    'MSCK',
+    'NOSCAN',
+    'NO_DROP',
+    'OFFLINE',
+    'OPTION',
+    'ORDER',
+    'OUTPUTDRIVER',
+    'OUTPUTFORMAT',
+    'OVER',
+    'OVERWRITE',
+    'OWNER',
+    'PARTIALSCAN',
     'PARTITION', //
-    'PARTITIONED', //xx
+    'PARTITIONED',
     'PARTITIONS', //
-    'PLUS', //xx
-    'PRECEDING', //xx
-    'PRESERVE', //xx
-    'PRETTY', //xx
-    'PRINCIPALS', //xx
-    'PROTECTION', //xx
-    'PURGE', //xx
-    'READ', //xx
-    'READONLY', //xx
-    'REBUILD', //xx
-    'RECORDREADER', //xx
-    'RECORDWRITER', //xx
-    'RELOAD', //xx
-    'RENAME', //xx
-    'REPAIR', //xx
+    'PLUS',
+    'PRECEDING',
+    'PRESERVE',
+    'PRETTY',
+    'PRINCIPALS',
+    'PROTECTION',
+    'PURGE',
+    'READ',
+    'READONLY',
+    'REBUILD',
+    'RECORDREADER',
+    'RECORDWRITER',
+    'RELOAD',
+    'RENAME',
+    'REPAIR',
     'REPLACE', //
-    'RESTRICT', //xx
-    'REWRITE', //xx
-    'ROLE', //xx
-    'ROLES', //xx
-    'ROLLUP', //xx
-    'SCHEMA', //xx
-    'SCHEMAS', //xx
+    'RESTRICT',
+    'REWRITE',
+    'ROLE',
+    'ROLES',
+    'ROLLUP',
+    'SCHEMA',
+    'SCHEMAS',
     'SECOND', //
-    'SEMI', //xx
-    'SERDE', //xx
-    'SERDEPROPERTIES', //xx
-    'SERVER', //xx
-    'SETS', //xx
-    'SHARED', //xx
-    'SHOW', //xx
-    'SHOW_DATABASE', //xx
-    'SKEWED', //xx
-    'SORT', //xx
-    'SORTED', //xx
-    'SSL', //xx
-    'STATISTICS', //xx
-    'STORED', //xx
-    'STREAMTABLE', //xx
+    'SEMI',
+    'SERDE',
+    'SERDEPROPERTIES',
+    'SERVER',
+    'SETS',
+    'SHARED',
+    'SHOW',
+    'SHOW_DATABASE',
+    'SKEWED',
+    'SORT',
+    'SORTED',
+    'SSL',
+    'STATISTICS',
+    'STORED',
+    'STREAMTABLE',
     'STRING', //
     'STRUCT', //
     'TABLE', //
     'TABLES', //
-    'TABLESAMPLE', //xx
+    'TABLESAMPLE',
     'TEMPORARY', //
     'TERMINATED', //
-    'TINYINT', //xx
-    'TOUCH', //xx
-    'TRANSACTIONS', //xx
-    'UNARCHIVE', //xx
-    'UNDO', //xx
-    'UNIONTYPE', //xx
-    'UNLOCK', //xx
-    'UNSET', //xx
+    'TINYINT',
+    'TOUCH',
+    'TRANSACTIONS',
+    'UNARCHIVE',
+    'UNDO',
+    'UNIONTYPE',
+    'UNLOCK',
+    'UNSET',
     'UNSIGNED', //
-    'URI', //xx
+    'URI',
     'USE', //
-    'UTC', //xx
-    'UTCTIMESTAMP', //xx
-    'VALUE_TYPE', //xx
+    'UTC',
+    'UTCTIMESTAMP',
+    'VALUE_TYPE',
     'VIEW', //
-    'WHILE', //xx
-    'YEAR', //xx
-    'ALL', //xx
-    'ALTER', //xx
-    'ARRAY', //xx
+    'WHILE',
+    'YEAR',
+    'ALL',
+    'ALTER',
+    'ARRAY',
     'AS', //
-    'AUTHORIZATION', //xx
+    'AUTHORIZATION',
     'BETWEEN', //
     'BIGINT', //
-    'BINARY', //xx
-    'BOOLEAN', //xx
-    'BOTH', //xx
-    'BY', //xx
-    'CAST', //xx
-    'CHAR', //xx
-    'CROSS', //xx
-    'CURRENT', //xx
+    'BINARY',
+    'BOOLEAN',
+    'BOTH',
+    'BY',
+    'CAST',
+    'CHAR',
+    'CROSS',
+    'CURRENT',
     'CURRENT_DATE', //
     'CURRENT_TIMESTAMP', //
-    'CURSOR', //xx
+    'CURSOR',
     'DATABASE', //
-    'DATE', //xx
-    'DECIMAL', //xx
+    'DATE',
+    'DECIMAL',
     'DELETE', //
     'DESCRIBE', //
     'DISTINCT', //
-    'DOUBLE', //xx
-    'DROP', //xx
+    'DOUBLE',
+    'DROP',
     'ELSE', //
     'END', //
     'EXISTS', //
-    'EXTENDED', //xx
-    'EXTERNAL', //xx
+    'EXTENDED',
+    'EXTERNAL',
 
-    'FETCH', //xx
-    'FLOAT', //xx
-    'FOLLOWING', //xx
-    'FOR', //xx
+    'FETCH',
+    'FLOAT',
+    'FOLLOWING',
+    'FOR',
     'FULL', //
     'FUNCTION', //
     'GRANT', //
-    'GROUP', //xx
-    'GROUPING', //xx
+    'GROUP',
+    'GROUPING',
     'IF', //
     'IMPORT', //
     'IN', //
     'INNER', //
-    'INT', //xx
+    'INT',
     'INTERVAL', //
     'INTO', //
     'IS',
-    'LESS', //xx
+    'LESS',
     'LIKE', //
-    'MACRO', //xx
-    'MAP', //xx
-    'MORE', //xx
-    'NONE', //xx
+    'MACRO',
+    'MAP',
+    'MORE',
+    'NONE',
     'NOT', //
-    'NULL', //xx
-    'OF', //xx
+    'NULL',
+    'OF',
     'ON', //
-    'OUT', //xx
-    'OUTER', //xx
-    'PERCENT', //xx
-    'PROCEDURE', //xx
-    'READS', //xx
-    'REDUCE', //xx
+    'OUT',
+    'OUTER',
+    'PERCENT',
+    'PROCEDURE',
+    'READS',
+    'REDUCE',
     'REGEXP', //
-    'REVOKE', //xx
-    'RIGHT', //xx
+    'REVOKE',
+    'RIGHT',
     'RLIKE', //
     'SET', //
-    'SMALLINT', //xx
+    'SMALLINT',
     'THEN', //
-    'TIMESTAMP', //xx
+    'TIMESTAMP',
     'TO', //
     'TRANSFORM', //
-    'TRIGGER', //xx
+    'TRIGGER',
 
     'TRUNCATE', //
     'UNBOUNDED', //
-    'UNIQUEJOIN', //xx
-    'USER', //xx
-    'VARCHAR', //xx
+    'UNIQUEJOIN',
+    'USER',
+    'VARCHAR',
     'WITH', //
 ]
 
