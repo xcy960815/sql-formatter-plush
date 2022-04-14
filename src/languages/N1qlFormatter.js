@@ -1,5 +1,5 @@
-import Formatter from '../core/Formatter';
-import Tokenizer from '../core/Tokenizer';
+import {Formatter} from '../core/Formatter';
+import {Tokenizer} from '../core/Tokenizer';
 
 const reservedWords = [
   'ALL',
@@ -219,7 +219,7 @@ const reservedNewlineWords = [
   'XOR',
 ];
 
-export default class N1qlFormatter extends Formatter {
+export class N1qlFormatter extends Formatter {
   static tokenizer = new Tokenizer({
     reservedWords,
     reservedTopLevelWords,

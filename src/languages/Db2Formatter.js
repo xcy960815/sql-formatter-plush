@@ -1,5 +1,5 @@
-import Formatter from '../core/Formatter';
-import Tokenizer from '../core/Tokenizer';
+import {Formatter} from '../core/Formatter';
+import {Tokenizer} from '../core/Tokenizer';
 
 const reservedWords = [
   'ABS',
@@ -546,7 +546,7 @@ const reservedNewlineWords = [
   'RIGHT OUTER JOIN',
 ];
 
-export default class Db2Formatter extends Formatter {
+export class Db2Formatter extends Formatter {
   static tokenizer = new Tokenizer({
     reservedWords,
     reservedTopLevelWords,

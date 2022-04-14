@@ -1,12 +1,12 @@
-import tokenTypes from './tokenTypes'
-import Indentation from './Indentation'
-import InlineBlock from './InlineBlock'
-import Params from './Params'
-import Tokenizer from './Tokenizer'
+import {tokenTypes} from './tokenTypes'
+import {Indentation} from './Indentation'
+import {InlineBlock} from './InlineBlock'
+import {Params} from './Params'
+import {Tokenizer} from './Tokenizer'
 
 const trimSpacesEnd = (str) => str.replace(/[ \t]+$/u, '')
 
-export default class Formatter {
+export class Formatter {
     /**
      * @param {Object} cfg
      *  @param {String} cfg.language

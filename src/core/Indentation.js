@@ -9,7 +9,7 @@ const INDENT_TYPE_BLOCK_LEVEL = 'block-level';
  * - BLOCK_LEVEL : increased by open-parenthesis
  * - TOP_LEVEL : increased by RESERVED_TOP_LEVEL words
  */
-export default class Indentation {
+export class Indentation {
   /**
    * @param {String} indent Indent value, default is "  " (2 spaces)
    */

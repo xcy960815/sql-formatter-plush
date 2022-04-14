@@ -13,7 +13,7 @@ const initRollupConfig = () => {
     const output = []
     if (isProduction) {
         output.push({
-            file: './dist/sqlFormatter.umd.js',
+            file: './dist/sql-formatter.umd.js',
             format: 'umd',
             name: 'sqlFormatter',
         })
@@ -24,7 +24,7 @@ const initRollupConfig = () => {
             format: 'umd',
             name: 'sqlFormatter',
         }, {
-            file: './dist/sqlFormatter.umd.js',
+            file: './dist/sql-formatter.umd.js',
             format: 'umd',
             name: 'sqlFormatter',
         })

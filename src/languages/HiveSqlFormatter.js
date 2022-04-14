@@ -1,6 +1,6 @@
-import Formatter from '../core/Formatter'
-import Tokenizer from '../core/Tokenizer'
-import tokenTypes from '../core/tokenTypes'
+import {Formatter} from '../core/Formatter'
+import {Tokenizer} from '../core/Tokenizer'
+import {tokenTypes} from '../core/tokenTypes'
 
 const reservedWords = [
     'ADD',
@@ -326,7 +326,7 @@ const reservedNewlineWords = [
     'XOR',
 ]
 
-export default class SparkSqlFormatter extends Formatter {
+export class SparkSqlFormatter extends Formatter {
     static tokenizer = new Tokenizer({
         reservedWords,
         reservedTopLevelWords,

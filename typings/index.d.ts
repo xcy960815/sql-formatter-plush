@@ -6,8 +6,8 @@
  * linesBetweenQueries: 查询之间的行
  * commabefore : 逗号前置 暂时不可用
  */
-type FromatterConfig = {
-    language: string
+export type FromatterConfig = {
+    language: "db2"|'n1ql'|'pl/sql'|"plsql"|"redshift"|"spark"|"sql"|"hive"
     indent?: string
     uppercase?: boolean
     linesBetweenQueries?: number

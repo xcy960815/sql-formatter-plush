@@ -1,5 +1,5 @@
-import Formatter from '../core/Formatter'
-import Tokenizer from '../core/Tokenizer'
+import {Formatter} from '../core/Formatter'
+import {Tokenizer} from '../core/Tokenizer'
 
 const reservedWords = [
     'SELECT',
@@ -327,7 +327,7 @@ const reservedNewlineWords = [
     'XOR',
 ]
 
-export default class StandardSqlFormatter extends Formatter {
+export class StandardSqlFormatter extends Formatter {
     static tokenizer = new Tokenizer({
         reservedWords,
         reservedTopLevelWords,

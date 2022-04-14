@@ -41,7 +41,6 @@
    * - BLOCK_LEVEL : increased by open-parenthesis
    * - TOP_LEVEL : increased by RESERVED_TOP_LEVEL words
    */
-
   var Indentation = function () {
     /**
      * @param {String} indent Indent value, default is "  " (2 spaces)
@@ -137,7 +136,6 @@
    * These blocks are formatted on a single line, unlike longer parenthized
    * expressions where open-parenthesis causes newline and increase of indentation.
    */
-
   var InlineBlock = function () {
       function InlineBlock() {
           _classCallCheck$1(this, InlineBlock);
@@ -1044,7 +1042,6 @@
 
       return Formatter;
   }();
-
   Formatter.tokenizer = new Tokenizer({
       reservedWords: [],
       reservedTopLevelWords: [],
@@ -1084,7 +1081,6 @@
 
     return Db2Formatter;
   }(Formatter);
-
   Db2Formatter.tokenizer = new Tokenizer({
     reservedWords: reservedWords,
     reservedTopLevelWords: reservedTopLevelWords,
@@ -1124,7 +1120,6 @@
 
     return N1qlFormatter;
   }(Formatter);
-
   N1qlFormatter.tokenizer = new Tokenizer({
     reservedWords: reservedWords$1,
     reservedTopLevelWords: reservedTopLevelWords$1,
@@ -1174,7 +1169,6 @@
 
       return PlSqlFormatter;
   }(Formatter);
-
   PlSqlFormatter.tokenizer = new Tokenizer({
       reservedWords: reservedWords$2,
       reservedTopLevelWords: reservedTopLevelWords$2,
@@ -1214,7 +1208,6 @@
 
     return StandardSqlFormatter;
   }(Formatter);
-
   StandardSqlFormatter.tokenizer = new Tokenizer({
     reservedWords: reservedWords$3,
     reservedTopLevelWords: reservedTopLevelWords$3,
@@ -1286,7 +1279,6 @@
 
       return SparkSqlFormatter;
   }(Formatter);
-
   SparkSqlFormatter.tokenizer = new Tokenizer({
       reservedWords: reservedWords$4,
       reservedTopLevelWords: reservedTopLevelWords$4,
@@ -1442,7 +1434,6 @@
 
       return SparkSqlFormatter;
   }(Formatter);
-
   SparkSqlFormatter$1.tokenizer = new Tokenizer({
       reservedWords: reservedWords$5,
       reservedTopLevelWords: reservedTopLevelWords$5,
@@ -1482,7 +1473,6 @@
 
       return StandardSqlFormatter;
   }(Formatter);
-
   StandardSqlFormatter$1.tokenizer = new Tokenizer({
       reservedWords: reservedWords$6,
       reservedTopLevelWords: reservedTopLevelWords$6,
@@ -1511,12 +1501,12 @@
        *
        * @param {String} query
        * @param {Object} cfg
-       * @param {String} cfg.language Query language, default is Standard SQL
-       * @param {String} cfg.indent Characters used for indentation, default is "  " (2 spaces)
-       * @param {Bool} cfg.uppercase Converts keywords to uppercase
-       * @param {Integer} cfg.linesBetweenQueries How many line breaks between queries
+       * @param {string} cfg.language Query language, default is Standard SQL
+       * @param {string} cfg.indent Characters used for indentation, default is "  " (2 spaces)
+       * @param {boolean} cfg.uppercase Converts keywords to uppercase
+       * @param {number} cfg.linesBetweenQueries How many line breaks between queries
        * @param {Object} cfg.params Collection of params for placeholder replacement
-       * @return {String}
+       * @return {string}
        */
 
   };var format = function format(query) {

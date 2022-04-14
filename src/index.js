@@ -1,10 +1,10 @@
-import Db2Formatter from './languages/Db2Formatter'
-import N1qlFormatter from './languages/N1qlFormatter'
-import PlSqlFormatter from './languages/PlSqlFormatter'
-import RedshiftFormatter from './languages/RedshiftFormatter'
-import SparkSqlFormatter from './languages/SparkSqlFormatter'
-import HiveSqlFormatter from './languages/HiveSqlFormatter'
-import StandardSqlFormatter from './languages/StandardSqlFormatter'
+import { Db2Formatter } from './languages/Db2Formatter'
+import { N1qlFormatter } from './languages/N1qlFormatter'
+import { PlSqlFormatter } from './languages/PlSqlFormatter'
+import { StandardSqlFormatter as RedshiftFormatter } from './languages/RedshiftFormatter'
+import { SparkSqlFormatter } from './languages/SparkSqlFormatter'
+import { SparkSqlFormatter as HiveSqlFormatter } from './languages/HiveSqlFormatter'
+import { StandardSqlFormatter } from './languages/StandardSqlFormatter'
 
 const FORMATTERS = {
     db2: Db2Formatter,
@@ -22,12 +22,12 @@ const FORMATTERS = {
  *
  * @param {String} query
  * @param {Object} cfg
- * @param {String} cfg.language Query language, default is Standard SQL
- * @param {String} cfg.indent Characters used for indentation, default is "  " (2 spaces)
- * @param {Bool} cfg.uppercase Converts keywords to uppercase
- * @param {Integer} cfg.linesBetweenQueries How many line breaks between queries
+ * @param {string} cfg.language Query language, default is Standard SQL
+ * @param {string} cfg.indent Characters used for indentation, default is "  " (2 spaces)
+ * @param {boolean} cfg.uppercase Converts keywords to uppercase
+ * @param {number} cfg.linesBetweenQueries How many line breaks between queries
  * @param {Object} cfg.params Collection of params for placeholder replacement
- * @return {String}
+ * @return {string}
  */
 
 export const format = (query, cfg = {}) => {

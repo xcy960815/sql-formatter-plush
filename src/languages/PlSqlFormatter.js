@@ -1,6 +1,6 @@
-import Formatter from '../core/Formatter'
-import Tokenizer from '../core/Tokenizer'
-import tokenTypes from '../core/tokenTypes'
+import {Formatter} from '../core/Formatter'
+import {Tokenizer} from '../core/Tokenizer'
+import {tokenTypes} from '../core/tokenTypes'
 
 const reservedWords = [
     'A',
@@ -416,7 +416,7 @@ const reservedNewlineWords = [
     'XOR',
 ]
 
-export default class PlSqlFormatter extends Formatter {
+export class PlSqlFormatter extends Formatter {
     static tokenizer = new Tokenizer({
         reservedWords,
         reservedTopLevelWords,

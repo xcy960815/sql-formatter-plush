@@ -1,4 +1,4 @@
-import tokenTypes from './tokenTypes'
+import {tokenTypes} from './tokenTypes'
 
 function isEmpty(arr) {
     return !Array.isArray(arr) || arr.length === 0
@@ -8,7 +8,7 @@ function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&')
 }
 
-export default class Tokenizer {
+export class Tokenizer {
     /**
      * @param {Object} cfg
      *  @param {String[]} cfg.reservedWords Reserved words in SQL
