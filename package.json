@@ -1,6 +1,6 @@
 {
     "name": "sql-formatter-plush",
-    "version": "1.0.9",
+    "version": "1.1.1",
     "description": "基于sql-formatter的改良版、添加了hive formatter",
     "main": "dist/sql-formatter.umd.js",
     "module": "dist/sql-formatter.umd.js",
